@@ -1,5 +1,5 @@
-const execSync = require("child_process").execSync;
-const core = require("@actions/core");
+const execSync = require('child_process').execSync;
+const core = require('@actions/core');
 const path = require('path');
 const fs = require('fs');
 
@@ -10,7 +10,7 @@ const branches = core.getInput('branches')
 if (fs.existsSync(sourePath)) {
     execSync(`rm -rf ${sourePath}`);
 }
-execSync(`git clone https://github.com/kintone/kintone-ui-component.git -b ${branches}`);
+execSync(`git clone https://github.com/kintone-labs/kintone-ui-component.git -b ${branches}`);
 execSync(`cd ${sourePath} && npm install`);
 execSync(`cd ${sourePath} && npm run build`);
 execSync(`cd ${sourePath} && npm pack`);

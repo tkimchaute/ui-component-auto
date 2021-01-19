@@ -1,6 +1,8 @@
 const CONFIG = require('./test/config.js');
 const Auth = require('./test/pageObject/auth/Auth.js')
-
+const ReportAggregator = require('@rpii/wdio-html-reporter').ReportAggregator;
+const HtmlReporter = require('@rpii/wdio-html-reporter').HtmlReporter;
+const log4js = require('log4js');
 
 exports.config = {
   specs: [
@@ -40,7 +42,7 @@ exports.config = {
     'goog:chromeOptions': {
       // to run chrome headless the following flags are required
       // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
-      args: ['--headless', '--disable-gpu', 'no-sandbox'],
+      args: ['--headless', '--disable-gpu', 'no-sandbox', '--window-size=1920,1080'],
     },
   }],
   logLevel: 'silent',
@@ -64,14 +66,66 @@ exports.config = {
     ],
   ],
   framework: 'mocha',
-  reporters: ['spec'],
+  reporters: ['spec',
+    [HtmlReporter, {
+      debug: true,
+      outputDir: './reports/html-reports/',
+      filename: 'report.html',
+      reportTitle: 'Test Report Title',
+
+      //to show the report in a browser when done
+      showInBrowser: true,
+
+      //to turn on screenshots after every test
+      useOnAfterCommandForScreenshot: false,
+
+      // to use the template override option, can point to your own file in the test project:
+      // templateFilename: path.resolve(__dirname, '../src/wdio-html-reporter-alt-template.hbs'),
+
+      // to add custom template functions for your custom template:
+      // templateFuncs: {
+      //     addOne: (v) => {
+      //         return v+1;
+      //     },
+      // },
+
+      //to initialize the logger
+      LOG: log4js.getLogger("default")
+    }]
+  ],
   mochaOpts: {
     ui: 'bdd',
     timeout: 900000
   },
-  before() {
-    browser.setWindowSize(1440, 900);
+
+  onPrepare: function (config, capabilities) {
+
+    let reportAggregator = new ReportAggregator({
+      outputDir: './reports/html-reports/',
+      filename: 'master-report.html',
+      reportTitle: 'Master Report',
+
+      // to use the template override option, can point to your own file in the test project:
+      // templateFilename: path.resolve(__dirname, '../src/wdio-html-reporter-alt-template.hbs')
+    });
+    reportAggregator.clean() ;
+
+    global.reportAggregator = reportAggregator;
   },
+
+  onComplete: function(exitCode, config, capabilities, results) {
+    (async () => {
+      await global.reportAggregator.createReport( {
+        config: config,
+        capabilities: capabilities,
+        results : results
+      });
+    })();
+  },
+
+  // before() {
+  //   browser.setWindowSize(1440, 900);
+  // },
 
   beforeSuite() {
     Auth.login()
@@ -79,5 +133,19 @@ exports.config = {
 
   afterSuite() {
     Auth.logout()
+  },
+
+  afterTest: function (test) {
+    const path = require('path');
+    const moment = require('moment');
+
+    // if test passed, ignore, else take and save screenshot.
+    if (test.passed) {
+      return;
+    }
+    const timestamp = moment().format('YYYYMMDD-HHmmss.SSS');
+    const filepath = path.join('reports/html-reports/screenshots/', timestamp + '.png');
+    browser.saveScreenshot(filepath);
+    process.emit('test:screenshot', filepath);
   },
 };
