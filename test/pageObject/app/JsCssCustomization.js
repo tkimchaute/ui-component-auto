@@ -2,8 +2,7 @@ const CONSTANT = require('../../constant');
 const path = require('path');
 const fs = require('fs');
 const CONFIG = require('../../config.js');
-const Helper = require('../../helper/main')
-
+const Helper = require('../../helper/main');
 
 const UPLOAD_JS_FILE_PC_LOCATOR = '//span[@id="jsFiles_DESKTOP-browse"]//input';
 const UPLOAD_CSS_FILE_PC_LOCATOR = '//*[@id="jsFiles_DESKTOP_CSS-browse"]//input';
@@ -13,7 +12,9 @@ const DELETE_JS_LOCATOR = '//div[@id="jsFiles_DESKTOP-filelist"]//button[contain
 const DELETE_CSS_LOCATOR = '//div[@id="jsFiles_DESKTOP_CSS-filelist"]//button[contains(@id,"remove")][1]';
 const UPLOAD_JS_LINK_BUTTON_LOCATOR = '//*[@id="jsFiles_DESKTOP-container"]//span[@class="gaia-customize-url-button-text"]'
 const UPLOAD_JS_LINK_INPUT_LOCATOR = '//input[@id="url-:v-text"]'
-const sourceFolder = path.join(__dirname, '..', '..', '..', 'components', `${CONFIG.folderTest}`);
+const testgridFolder = path.join(__dirname, '..', '..', '..', 'components/common/testgrid');
+const bodyFile = path.join(__dirname, '..', '..', '..', 'components/common/body.js');
+const componentSourceFolder = path.join(__dirname, '..', '..', '..', 'components', `${CONFIG.folderTest}`);
 
 class JsCssCustomization {
     navigate() {
@@ -61,29 +62,29 @@ class JsCssCustomization {
 
     _orderFile(sourceFolder) {
         const test = fs.readdirSync(sourceFolder);
-        const result = test.sort(function (file) {
-            if (file.includes('body.js'))
-                return 1;
-            else if (file.includes('testgrid'))
-                return 1;
-        }).reverse();
+        const result = test.sort().reverse();
         return result;
     }
 
     uploadFile() {
         console.log('!!! Upload file !!!');
-        const result = this._orderFile(sourceFolder);
+        const componentFiles = this._orderFile(componentSourceFolder);
         if (`${CONFIG.folderTest}` == "react-non-jsx") {
-            this.addJSLink('https://unpkg.com/react@16/umd/react.production.min.js');
-            this.addJSLink('https://unpkg.com/react-dom@16/umd/react-dom.production.min.js');
+            this._addJSLink('https://unpkg.com/react@16/umd/react.production.min.js');
+            this._addJSLink('https://unpkg.com/react-dom@16/umd/react-dom.production.min.js');
+            this._addJSFiles(`${testgridFolder}/testgrid.js`);
+            this._addCSSFiles(`${testgridFolder}/testgrid.css`);
         }
         if (`${CONFIG.folderTest}` == 'js'){
             const JSUIComponentPath = path.join(__dirname, '..', '..', '..', 'node_modules','@kintone', 'kintone-ui-component', 'dist','kintone-ui-component.min.js');
             this._addJSFiles(JSUIComponentPath);
+            this._addJSFiles(`${testgridFolder}/testgrid.js`);
+            this._addJSFiles(bodyFile);
             const CSSUIComponentPath = path.join(__dirname, '..', '..', '..', 'node_modules','@kintone', 'kintone-ui-component', 'dist','kintone-ui-component.min.css');
             this._addCSSFiles(CSSUIComponentPath);
+            this._addCSSFiles(`${testgridFolder}/testgrid.css`);
         }
-        for (let fileName of result) {
+        for (let fileName of componentFiles) {
             if (fileName.includes('.js')) {
                 const filePath = path.join(__dirname, '..', '..', '..', 'components', `${CONFIG.folderTest}`, `${fileName}`);
                 this._addJSFiles(filePath);
