@@ -29,13 +29,13 @@ const XPATH_NOTIFY_ON_CALL_SHOW = '.notify-onCall .notify-show';
 const XPATH_NOTIFY_ON_CALL_CLOSE = '.notify-onCall .kuc-close-button';
 
 
-describe('kintoneUIComponent - Button', function () {
+describe('kintoneUIComponent - Notify Popup', function () {
     it('[Notify-2] Verify that the Success NotifyPopup have the  UI is the same as NotifyPopup on kintone', function () {
         Helper.ElementHandler
             .click(XPATH_NOTIFY_SUCCESS_SHOW)
             .verifyElementColor(XPATH_NOTIFY_SUCCESS, 'background', '#91c36c')
             .verifyElementPosition(XPATH_NOTIFY_SUCCESS, 'position', 'fixed')
-            .verifyElementSize(XPATH_NOTIFY_SUCCESS, 215, 70)
+            .verifyElementSize(XPATH_NOTIFY_SUCCESS, 216, 70)
             .click(XPATH_NOTIFY_SUCCESS_CLOSE)
     });
     it('[Notify-3] Verify that the Error NotifyPopup have the UI is the same as NotifyPopup on kintone', function () {

@@ -58,7 +58,7 @@ const XPATH_DROPDOWN_ON_CALL_SELECT = '.dropdown-onCall .kuc-list-outer .kuc-lis
 const XPATH_DROPDOWN_LIST_ITEMS_SELECT = "//div[@class='dropdown-render']//div[@class='kuc-list-outer']//span[text()='Orange']";
 
 
-describe('kintoneUIComponent - Button', function () {
+describe('kintoneUIComponent - Dropdown', function () {
     it('[Dropdown-2] Verify that the Dropdown have the  UI is the same as Dropdown on kintone', function () {
         Helper.ElementHandler
             .verifyElementDisplayed(XPATH_DROPDOWN)

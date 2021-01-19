@@ -23,7 +23,7 @@ const ENABLE_ENABLED_TEXTAREA = "//div[@id='enable-enabled-textarea']//textarea[
 const ENABLE_DISABLED_TEXTAREA = "//div[@id='enable-disabled-textarea']//textarea[@class='kuc-textarea']";
 const ENABLE_BUTTON_TEXTAREA = "//button[contains(text(), 'Enable TextArea')]";
 
-describe('kintoneUIComponent - Text', function () {
+describe('kintoneUIComponent - Text Area', function () {
     // it('[TextArea-2-3-4-5-8] should Verify that the Textbox have the UI is the same as Textbox on kintone - color, - size ( width + height)', function () {
     //     Helper.ElementHandler
     //         .verifyElementSize(CONSTRUCTOR_TEXTAREA,297,123)
@@ -80,7 +80,7 @@ describe('kintoneUIComponent - Text', function () {
             .verifyElementDisplayed(HIDE_VISIBLE_TEXTAREA)
             .click(HIDE_BUTTON_TEXTAREA)
             .verifyElementNotDisplayed(HIDE_INVISIBLE_TEXTAREA)
-            .verifyElementNotDisplayed(HIDE_VISIBLE_TEXTAREA) 
+            .verifyElementNotDisplayed(HIDE_VISIBLE_TEXTAREA)
     });
 
     it('[Textarea-34] should disable the current enable TextArea and disable the current disable TextArea', function () {
@@ -89,7 +89,7 @@ describe('kintoneUIComponent - Text', function () {
             .verifyElementDisabled(DISABLE_DISABLED_TEXTAREA)
             .verifyElementDisabled(DISABLE_ENABLED_TEXTAREA)
     });
-    
+
     it('[Textarea-35] should enable the disabled TextArea and disable the disabled TextArea', function () {
         Helper.ElementHandler
             .click(ENABLE_BUTTON_TEXTAREA)

@@ -48,7 +48,7 @@ const XPATH_TABLE_2ND_EXIST = '.table-working .kuc-table';
 const XPATH_TABLE_ON_CELL_ROW = ".table-cellChange .kuc-table-tbody .kuc-table-tr"
 
 
-describe('kintoneUIComponent - Button', function () {
+describe('kintoneUIComponent - Table', function () {
     it('[Table-2] Verify that the Table have the  UI is the same as Table on kintone', function () {
         Helper.ElementHandler
             .verifyElementColor(XPATH_TABLE_HEADER, 'background-color', '#3498db')

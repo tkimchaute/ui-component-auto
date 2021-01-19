@@ -32,7 +32,7 @@ const XPATH_RADIO_ENABLE_BUTTON = '.radio-enable .enable-radio';
 const XPATH_RADIO_ON_CALL_BUTTON = '//div[@class="radio-onCall"]//label[contains(text(),"Tiger")]';
 
 
-describe('kintoneUIComponent - Button', function () {
+describe('kintoneUIComponent - Radio Button', function () {
     it('[RadioButton-2] Verify that the Radio Button have the  UI is the same as Radio Button on kintone', function () {
         Helper.ElementHandler
             .verifyElementDisplayed(XPATH_RADIO)

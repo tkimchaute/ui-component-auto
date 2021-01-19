@@ -15,7 +15,7 @@ const SET_TOGGLE_FIELDGROUP = "//div[@id='set-toggle-fieldgroup']/div[@class='ku
 const SET_TOGGLE_BUTTON_FIELDGROUP = "//div[@id='set-toggle-fieldgroup']//button[contains(text(), 'Set Toggle FieldGroup')]";
 const GET_TOGGLE_BUTTON_FIELDGROUP = "//div[@id='get-toggle-fieldgroup']//button[contains(text(), 'Get Toggle FieldGroup')]";
 
-describe('kintoneUIComponent - Text', function () {
+describe('kintoneUIComponent - FieldGroup', function () {
     it('[FieldGroup-3] should Verify the operation of FieldGroup, all below components can be add to table as child component', function () {
         Helper.ElementHandler
             //check the toggle of fieldgroup

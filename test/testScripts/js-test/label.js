@@ -40,7 +40,8 @@ const SET_REQUIRED_NO_PARAM_BUTTON_LABEL = "//button[contains(text(),'Set requir
 describe('kintoneUIComponent - Label', function () {
     it('[Label-2] Verify that the Label have the UI is the same as Label on kintone', function () {
         Helper.ElementHandler
-            .verifyElementSize(UI, 45, 17)
+            // .verifyElementSize(UI, 45, 17)
+            .verifyElementSize(UI, 46, 17)
             .verifyElementColor(UI, 'color', '#333333')
     });
 

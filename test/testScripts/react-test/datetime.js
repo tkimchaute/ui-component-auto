@@ -53,6 +53,8 @@ const ENABLE_DISABLED_DATETIME_BUTTON = '//button[@id="enable-disabled-datetime-
 const DATE_ENABLED_DATETIME = '//div[@id="enable-disabled-datetime"]//div[@class="date-time-container"]//input[@class="kuc-input-text text-input"]';
 const TIME_ENABLED_DATETIME = '//div[@id="enable-disabled-datetime"]//div[@class="date-time-container"]//input[@class="kuc-input-text text-input time"]';
 
+// const TIMESTAMP = 'GMT+0700 (Indochina Time)';
+const TIMESTAMP = 'GMT+0000 (Coordinated Universal Time)';
 
 describe('kintoneUIComponent - Datetime', function () {
     it('[Datetime-2] Verify that the DateTime form have the UI is the same as DateTime form on kintone', function () {
@@ -97,19 +99,19 @@ describe('kintoneUIComponent - Datetime', function () {
     it('[Datetime-31] Verify that can get value for Datetime component with Date', function () {
         Helper.ElementHandler
             .click(GET_VALUE_DATE_BUTTON)
-            .verifyAlertText('Mon Oct 13 2014 11:13:00 GMT+0700 (Indochina Time)')
+            .verifyAlertText(`Mon Oct 13 2014 11:13:00 ${TIMESTAMP}`)
     });
 
     it('[Datetime-31] Verify that can get value for Datetime component with Time', function () {
         Helper.ElementHandler
             .click(GET_VALUE_TIME_BUTTON)
-            .verifyAlertText('Mon Oct 13 2014 11:13:00 GMT+0700 (Indochina Time)')
+            .verifyAlertText(`Mon Oct 13 2014 11:13:00 ${TIMESTAMP}`)
     });
 
     it('[Datetime-31] Verify that can get value for Datetime component with Datetime', function () {
         Helper.ElementHandler
             .click(GET_VALUE_DATETIME_BUTTON)
-            .verifyAlertText('Mon Oct 13 2014 11:13:00 GMT+0700 (Indochina Time)')
+            .verifyAlertText(`Mon Oct 13 2014 11:13:00 ${TIMESTAMP}`)
     });
 
     it('[Datetime-35] Verify that can set value for DateTime component which contains existing value with Date', function () {

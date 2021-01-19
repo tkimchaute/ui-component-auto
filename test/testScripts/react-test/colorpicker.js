@@ -29,7 +29,7 @@ const XPATH_CALLBACK_COLORPICKER_BUTTON = "//div[@id='on-callback-colorpicker']/
 const XPATH_TRIGGER_COLORPICKER = "//div[@id='on-callback-colorpicker']//div/input";
 const XPATH_TRIGGER_COLORPICKER_BUTTON = "//div[@id='on-callback-colorpicker']//button[@class='kuc-btn submit']"
 
-describe('kintoneUIComponent - Alert', () => {
+describe('kintoneUIComponent - Color picker', () => {
   it('[Colorpicker-2-3-4-7] should checking HEX input field, ColorPicker popup window displayed, operation of Saturation,Hue,RGB input, full option ColorPicker  ', function () {
     Helper.ElementHandler
       .verifyValue(XPATH_CONSTRUCTOR_COLORPICKER, '#ecd110')

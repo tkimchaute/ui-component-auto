@@ -23,7 +23,8 @@ describe('kintoneUIComponent - Notify Popup', function () {
         Helper.ElementHandler
             .click(ON_TRIGGER_NOTIFY_SHOW_BUTTON)
             .verifyElementColor(ON_TRIGGER_NOTIFY, 'background', '#91c36c')
-            .verifyElementSize(ON_TRIGGER_NOTIFY, 241, 70)
+            // .verifyElementSize(ON_TRIGGER_NOTIFY, 241, 70)
+            .verifyElementSize(ON_TRIGGER_NOTIFY, 240, 70)
             .click(ON_TRIGGER_NOTIFY_CLOSE_BUTTON)
     });
 
@@ -31,7 +32,8 @@ describe('kintoneUIComponent - Notify Popup', function () {
         Helper.ElementHandler
             .click(FULL_OPTIONS_NOTIFY_SHOW_BUTTON)
             .verifyElementColor(FULL_OPTIONS_NOTIFY, 'background', '#e74c3c')
-            .verifyElementSize(FULL_OPTIONS_NOTIFY, 243, 70)
+            // .verifyElementSize(FULL_OPTIONS_NOTIFY, 243, 70)
+            .verifyElementSize(FULL_OPTIONS_NOTIFY, 244, 70)
             .click(FULL_OPTIONS_NOTIFY_CLOSE_BUTTON)
     });
 

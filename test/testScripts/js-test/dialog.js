@@ -57,7 +57,8 @@ describe('kintoneUIComponent - Dialog', function () {
             .click(SHOW_DIALOG_FULL_OPTION_BUTTON)
             .waitForElement(DIALOG_FULL_OPTION)
             .verifyElementColor(DIALOG_FULL_OPTION, 'background-color', '#ffffff')
-            .verifyElementSize(DIALOG_FULL_OPTION, 600, 172)
+            // .verifyElementSize(DIALOG_FULL_OPTION, 600, 172)
+            .verifyElementSize(DIALOG_FULL_OPTION, 600, 188)
             .click(DIALOG_FULL_OPTION_CLOSE_BUTTON)
     });
 

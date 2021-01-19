@@ -18,7 +18,7 @@ const XPATH_DISABLE_BUTTON_CLICKABLE = '#submitButton_enable .kuc-btn';
 const XPATH_BUTTON_ON_CALL_CLICK = '#submitButton_onCall .kuc-btn';
 const XPATH_BUTTON_ON_TRIGGER = '#submitButton_onTrigger .kuc-btn';
 
-describe('kintoneUIComponent - Button', function () {
+describe('kintoneUIComponent - Submit Button', function () {
     it('[Submit button-3] Verify that the Submit button have the UI is the same as button on kintone', function () {
         Helper.ElementHandler
             .verifyElementDisplayed(XPATH_BUTTON_SUBMIT)

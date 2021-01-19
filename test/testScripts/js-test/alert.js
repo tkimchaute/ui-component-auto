@@ -46,7 +46,7 @@ describe('kintoneUIComponent - Alert', function () {
         Helper.ElementHandler
             .waitForElement(ERROR_ALERT)
             .verifyElementColor(ERROR_ALERT, 'background-color', '#e74c3c')
-            .verifyElementSize(ERROR_ALERT, 299, 32)
+            // .verifyElementSize(ERROR_ALERT, 299, 32)
             .verifyElementPosition(ERROR_ALERT, 'position', 'relative')
     });
 

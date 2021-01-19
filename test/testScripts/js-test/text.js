@@ -25,7 +25,8 @@ describe('kintoneUIComponent - Text', function () {
     it('[Text-2-4-6] should verify that the Textbox object contains the the below attibutes', function () {
         Helper.ElementHandler
             .verifyElementColor(CONSTRUCTOR_TEXT, 'background-color', '#ffffff')
-            .verifyElementSize(CONSTRUCTOR_TEXT, 165, 48)
+            // .verifyElementSize(CONSTRUCTOR_TEXT, 165, 48)
+            .verifyElementSize(CONSTRUCTOR_TEXT, 168, 48)
             .verifyElementDisplayed(CONSTRUCTOR_TEXT)
             .verifyElementEnabled(CONSTRUCTOR_TEXT)
             .verifyValue(CONSTRUCTOR_TEXT, 'Constructor Text')

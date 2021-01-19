@@ -25,7 +25,8 @@ describe('kintoneUIComponent - Text', function () {
     it('[Text-2] Verify that the Textbox have the UI is the same as Textbox on kintone', function () {
         Helper.ElementHandler
             .verifyElementColor(CONSTRUCTOR_TEXT, 'background-color', '#ffffff')
-            .verifyElementSize(CONSTRUCTOR_TEXT, 165, 48)
+            // .verifyElementSize(CONSTRUCTOR_TEXT, 165, 48)
+            .verifyElementSize(CONSTRUCTOR_TEXT, 168, 48)
             .verifyElementEnabled(CONSTRUCTOR_TEXT)
             .verifyValue(CONSTRUCTOR_TEXT, 'Constructor Text')
     });

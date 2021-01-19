@@ -29,12 +29,13 @@ const XPATH_CALLBACK_COLORPICKER_BUTTON = "//div[@id='on-callback-colorpicker']/
 const XPATH_TRIGGER_COLORPICKER = "//div[@id='callback-trigger-colorpicker']//div/input";
 const XPATH_TRIGGER_COLORPICKER_BUTTON = "//div[@id='callback-trigger-colorpicker']//button[@class='kuc-btn submit']"
 
-describe('kintoneUIComponent - Alert', () => {
+describe('kintoneUIComponent - Color picker', () => {
   it('[Colorpicker-2-3-4-7] should checking HEX input field, ColorPicker popup window displayed, operation of Saturation,Hue,RGB input, full option ColorPicker  ', function () {
     Helper.ElementHandler
       .verifyValue(XPATH_CONSTRUCTOR_COLORPICKER, '#ecd110')
       .verifyElementColor(XPATH_CONSTRUCTOR_COLORPICKER, 'background-color', '#ecd110')
       .click(XPATH_CONSTRUCTOR_COLORPICKER)
+      .waitForElement(XPATH_CONSTRUCTOR_COLORPICKER_SATURATION);
 
     const verify = (verifyObj, expectObj) => {
       expect(verifyObj.Rfield).to.equal(expectObj.r);
@@ -46,7 +47,7 @@ describe('kintoneUIComponent - Alert', () => {
     }
 
     const getVerifyObj = () => {
-      return verifyObject = {
+      return {
         Rfield: Helper.ElementHandler.getValue(XPATH_CONSTRUCTOR_COLORPICKER_RGB_R_FIELD),
         Gfield: Helper.ElementHandler.getValue(XPATH_CONSTRUCTOR_COLORPICKER_RGB_G_FIELD),
         Bfield: Helper.ElementHandler.getValue(XPATH_CONSTRUCTOR_COLORPICKER_RGB_B_FIELD),

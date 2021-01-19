@@ -18,7 +18,7 @@ const ENABLE_TABS = "//div[@id='enable-tabs']//div[@class='kuc-tabs-tabs']//ul[@
 const ENABLE_BUTTON_TABS = "//div[@id='enable-tabs']//button[contains(text(), 'Enable Tabs')]";
 
 
-describe('kintoneUIComponent - Text', function () {
+describe('kintoneUIComponent - Tabs', function () {
     it('[Tabs-1-2-3-4-5-6-7-15] should Verify the operation of Tabs, all below components can be add to table as child component', function () {
         Helper.ElementHandler
             .verifyNumberOfElements(CONSTRUCTOR_TABS, 4)

@@ -40,7 +40,7 @@ const XPATH_LABEL_ENABLE_VALUE = '.label-set-enable .get-state';
 const XPATH_LABEL_ON_CLICK = '.label-onCall .kuc-label';
 
 
-describe('kintoneUIComponent - Button', function () {
+describe('kintoneUIComponent - Label', function () {
     it('[Label-2] Verify that the Label and Required Label have the UI is the same as on kintone', function () {
         Helper.ElementHandler
             .waitForElement(XPATH_LABEL)
