@@ -40,6 +40,13 @@ jobs:
     - name: Install latest build kintone-ui-component
       run: |
         npm install ${{steps.get_latest_build.outputs.files}}
+    - name: webpack build for react testing
+      env:
+        TEST_TYPE: ${{secrets.TEST_JS}}
+      run: |
+        if [ ${TEST_TYPE} == "react" ]; then
+          npm run build-webpack
+        fi
     - name: preparation source
       run: |
         domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run preparation
@@ -57,3 +64,4 @@ jobs:
       with:
         name: reports
         path: reports
+

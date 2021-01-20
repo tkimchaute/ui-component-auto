@@ -3,7 +3,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = (env = {}) => {
     return {
         entry: {
-            "source.min": './components/react/react-jsx/main.js',
+            "ui-components-source.min": './components/react/react-jsx/main.js',
         },
         output: {
             path: path.resolve(__dirname, './components/react/'),
