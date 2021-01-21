@@ -169,7 +169,13 @@ class ElementHandler {
     verifyAlertText(text) {
         let alertText = browser.getAlertText()
         expect(alertText).to.equal(text);
-        browser.acceptAlert();
+        // workaround for the case alert dialog cannot be closed right after calling acceptAlert
+        let i = 0;
+        while (browser.isAlertOpen() && i < 20) {
+            browser.acceptAlert();
+            browser.pause(1000);
+            i++;
+        }
         return this;
     }
 

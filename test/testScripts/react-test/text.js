@@ -90,8 +90,6 @@ describe('kintoneUIComponent - Text', function () {
     it('[Text-33] should register a callback function for change event successfully', function () {
         Helper.ElementHandler
             .waitForElement(ON_CALLBACK_FUNCTION_TEXT)
-            .click(ON_CALLBACK_FUNCTION_TEXT)
-            .verifyAlertText('onClickCallBackFunctionText has been clicked')
             .addValue(ON_CALLBACK_FUNCTION_TEXT, 'onChange callback')
             .verifyAlertText('onChangeCallBackFunctionText has been changed')
     });
@@ -101,7 +99,5 @@ describe('kintoneUIComponent - Text', function () {
             .waitForElement(ON_CALLBACK_TRIGGER_TEXT)
             .click(ON_CALLBACK_TRIGGER_TEXT)
             .verifyAlertText('onClickCallBackTriggerText has been clicked')
-            .addValue(ON_CALLBACK_TRIGGER_TEXT, 'onChange callback')
-            .verifyAlertText('onChangeCallBackTriggerText has been changed')
     });
 });
