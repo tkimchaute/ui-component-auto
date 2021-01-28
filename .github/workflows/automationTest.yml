@@ -32,24 +32,24 @@ jobs:
 #    - name: install environment data
 #      run: |
 #        npm install https://${{secrets.ACCESS_TOKEN}}:x-oauth-basic@github.com/luckhiem/environment-data.git
-    - name: Get latest build kintone-ui-component
-      uses: ./actions/get_latest_build
-      id: get_latest_build
-      with:
-        branches: master
-    - name: Install latest build kintone-ui-component
-      run: |
-        npm install ${{steps.get_latest_build.outputs.files}}
-    - name: webpack build for react testing
-      env:
-        TEST_TYPE: ${{secrets.TEST_JS}}
-      run: |
-        if [ ${TEST_TYPE} == "react" ]; then
-          npm run build-webpack
-        fi
-    - name: preparation source
-      run: |
-        domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run preparation
+#    - name: Get latest build kintone-ui-component
+#      uses: ./actions/get_latest_build
+#      id: get_latest_build
+#      with:
+#        branches: master
+#    - name: Install latest build kintone-ui-component
+#      run: |
+#        npm install ${{steps.get_latest_build.outputs.files}}
+#    - name: webpack build for react testing
+#      env:
+#        TEST_TYPE: ${{secrets.TEST_JS}}
+#      run: |
+#        if [ ${TEST_TYPE} == "react" ]; then
+#          npm run build-webpack
+#        fi
+#    - name: preparation source
+#      run: |
+#        domain=${{secrets.DOMAIN}} appID=${{secrets.APPID}} username=${{secrets.USERNAME}} password=${{secrets.PASSWORD}} test=${{secrets.TEST_JS}} npm run preparation
     - name: run test
       if: success()
       run: |
